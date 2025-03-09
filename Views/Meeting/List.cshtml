@@ -1,0 +1,39 @@
+﻿@model List<UserInfo>
+@{
+    ViewBag.Title = "Toplantıya Katılım Listesi"; @* Burada Layout'a dinamik olarak sayfanın başlığını gönderdik. *@
+}
+
+<main class="text-center">
+
+    <h1 class="h4">Toplantı Katılım Listesi</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Ad</td>
+                <td>Katılım Durumu</td>
+                <td></td>
+            </tr>
+        </thead>
+
+        @foreach (var user in Model)
+        {
+
+            var durum = user.WillAttend == true ? "Evet" : "Hayır"; @* Başvuruya katılım durumunu tuttuk. *@
+            var className = user.WillAttend == true ? "table-success" : "table-danger"; @* Tablo rengini buluşmaya katılıp, katılmama durumuna göre ayarladık. *@
+
+            <tr class="@className">
+                <td>@user.Name</td>
+                <td>@durum</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-controller="Meeting" asp-action="Details" asp-route-id="@user.Id">Detay</a> @* Buraya tıklanıldığında "Meeting/Details/id" rotasına gidecek. ve Details action'nun int id parametresi ile "asp-route-id="@user.Id"" .net sayesinde otomatik eşleşecek ve int id = user.Id olacak. *@
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div class="card">
+        <div class="card-body">
+            <span>Katılımcı sayısı: @Model.Count(katılımcı => katılımcı.WillAttend == true)</span> @* Katılımcı sayısını LINQ ile hesapladık *@
+        </div>
+    </div>
+</main>

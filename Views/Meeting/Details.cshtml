@@ -1,0 +1,28 @@
+﻿@model UserInfo
+@{
+    ViewBag.Title = "Başvuru Detayı";  @* Burada Layout'a dinamik olarak sayfanın başlığını gönderdik. *@
+}
+
+@{
+    var className = @Model.WillAttend == true ? "primary" : "danger"; @* Kişi katılıyorsa mavi, katılmıyorsa kırmızı. *@
+}
+
+<main class="text-center">
+    <h1 class="h4">Başvuru Detayı</h1>
+    <p>
+        <span class="badge text-bg-@className">
+            @if (Model.WillAttend == true)
+            {
+                <text>Katılıyor</text>
+            }
+            else
+            {
+                <text>Katılmıyor</text>
+            }
+        </span>
+    </p>
+    <p>İsim: @Model.Name</p>
+    <p>Email: @Model.Email</p>
+    <p>Telefon: @Model.Phone</p>
+    <a asp-controller="Meeting" asp-action="List" class="btn btn-outline-@className">Katılımcı Listesi</a>
+</main>

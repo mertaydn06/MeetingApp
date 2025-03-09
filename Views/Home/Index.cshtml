@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Toplantı Başvuru";  @* Burada Layout'a dinamik olarak sayfanın başlığını gönderdik. *@
+    Layout = "_Layout2";  @* Burada _ViewStart.cshtml dosyasının içindeki Layout tanımlamasını ezdik. *@
+}
+
+<main class="text-center">
+    <h1 class="h4">@ViewData["Selamlama"], Merhaba</h1> @* Selamlama bilgisi Index Action'dan geldi. *@
+    <p>Toplantı katılım bildiriniz.</p>
+
+    <div class="card my-2">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">@Model.Location</li>
+            <li class="list-group-item">@Model.Date.ToString("dd/MM/yyyy") tarihinde gerçekleşecek</li>
+            <li class="list-group-item">@Model.NumberOfPeople Katılımcı</li>
+        </ul>
+    </div>
+
+    <a class="btn btn-sm btn-outline-primary" asp-controller="Meeting" asp-action="Apply">Başvuru yap</a>
+</main>
