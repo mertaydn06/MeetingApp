@@ -1,4 +1,4 @@
-# 📌 Personel Takip Uygulaması
+# 📌 Toplantı Başvuru Uygulaması
 
 Bu proje, ASP.NET Core MVC kullanılarak geliştirilen bir toplantı başvuru ve katılım yönetim uygulamasıdır. Kullanıcılar toplantılara başvurabilir, başvuru detaylarını görüntüleyebilir ve toplantı katılımcılarını listeleyebilir.
 
